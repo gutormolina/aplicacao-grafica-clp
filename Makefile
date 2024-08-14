@@ -7,7 +7,7 @@ PYTHON = python3
 PYTHON_SCRIPT = interface.py
 
 # Targets
-LIBRARY = libMande.so
+LIBRARY = libMandel.so
 SOURCES = mandelbrot.c
 
 # Default
