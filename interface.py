@@ -123,7 +123,7 @@ class Application:
         rec_window = tk.Toplevel(self.root)
         rec_window.title("Recomendações")
         
-        heart = tk.Label(rec_window, text="Heart:")
+        heart = tk.Label(rec_window, text="Coração:")
         heart.grid(column=0, row=0, columnspan=2)
         heart_xmin_text = tk.StringVar(value="-0.74877")
         heart_xmin = tk.Entry(rec_window, state='readonly', textvariable=heart_xmin_text)
@@ -144,7 +144,7 @@ class Application:
         heart_xres = tk.Entry(rec_window, state='readonly', textvariable=heart_xres_text)
         heart_xres.grid(column=1, row=3)
         
-        wide_view = tk.Label(rec_window, text="Wide view:")
+        wide_view = tk.Label(rec_window, text="Visão Ampla:")
         wide_view.grid(column=2, row=0, columnspan=2)
         wv_xmin_text = tk.StringVar(value="-2.0")
         wv_xmin = tk.Entry(rec_window, state='readonly', textvariable=wv_xmin_text)
