@@ -19,7 +19,7 @@ def process_number(maxiter):
         # Preparando os argumentos
         maxiter_bytes = str(maxiter).encode('utf-8')
         arguments = [
-            b"./mandel",         # Nome do programa, geralmente ignorado
+            b"./mandelbrot",         # Nome do programa, geralmente ignorado
             b"0.27085", b"0.27100",  # xmin, xmax
             b"0.004640", b"0.004810",  # ymin, ymax
             maxiter_bytes,             # maxiter
@@ -78,4 +78,3 @@ def generateScreen():
 
 if __name__ == "__main__":
     generateScreen()
-
