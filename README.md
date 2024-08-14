@@ -1,5 +1,5 @@
 # aplicacao-grafica-clp
-Repositório contendo trabalho realizado na disciplina de CLP.
+Repositório contendo implementação de fractal de Mandelbrot, realizado como trabalho na disciplina de CLP.
 
 ### Alunos
 
