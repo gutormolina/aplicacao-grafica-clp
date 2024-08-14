@@ -5,6 +5,7 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 
 mylib = ctypes.CDLL('./libMandel.so')
+
 class Application:
     def __init__(self, root) -> None:
         self.root = root
