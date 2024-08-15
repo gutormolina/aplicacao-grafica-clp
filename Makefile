@@ -20,5 +20,3 @@ $(LIBRARY): $(SOURCES)
 # Rodar script Python
 run: $(LIBRARY)
 	$(PYTHON) $(PYTHON_SCRIPT)
-
-
