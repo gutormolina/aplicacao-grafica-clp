@@ -4,23 +4,26 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
 
+# Carrega a biblioteca compartilhada
 mylib = ctypes.CDLL('./libMandel.so')
 
 class Application:
     def __init__(self, root) -> None:
         self.root = root
-        self.generateScreen()
+        self.generateScreen() # Gera a tela inicial
 
     # Função a ser chamada quando o botão for clicado
     def processFractal(self):
         xmin, xmax, ymin, ymax, maxiter, xres = self.getValues()
         try:
+            # Define os tipos dos argumentos e do retorno da função
             mylib.main.argtypes = [
                 ctypes.c_int,
                 ctypes.POINTER(ctypes.c_char_p)
             ]
             mylib.main.restype = ctypes.c_int
 
+            # Prepara os parâmetros para serem passados para a função
             maxiter_bytes = str(maxiter).encode('utf-8')
             arguments = [
                 b"./mandelbrot",
@@ -33,9 +36,11 @@ class Application:
             argc = len(arguments)
             argv = (ctypes.c_char_p * argc)(*arguments)
 
+            # Chama a função C
             ret = mylib.main(argc, argv)
             print(f"Function returned: {ret}")
 
+            # Carrega a imagem gerada em uma nova janela
             self.loadImage()
         except ValueError:
             messagebox.showerror("Error", "Por favor insira um número válido.")
@@ -47,6 +52,7 @@ class Application:
         else:
             return False
 
+    # Função para pegar os valores dos campos de entrada
     def getValues(self):
         xmin = self.xminEnt.get()
         xmax = self.xmaxEnt.get()
@@ -119,6 +125,7 @@ class Application:
         self.recommend = tk.Button(self.root, text="Parâmetros recomendados", command=self.recommendParameters)
         self.recommend.grid(column=0, row=7, columnspan=2)
 
+    # Janela de recomendação de parâmetros
     def recommendParameters(self):
         rec_window = tk.Toplevel(self.root)
         rec_window.title("Recomendações")
@@ -186,6 +193,7 @@ class Application:
         mm_xres = tk.Entry(rec_window, state='readonly', textvariable=mm_xres_text)
         mm_xres.grid(column=2, row=7)
         
+    # Função para carregar a imagem gerada em uma nova janela    
     def loadImage(self):
         try:
             img_window = tk.Toplevel(self.root)
